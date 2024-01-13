@@ -1,7 +1,7 @@
 import time
-from defines_py3 import getCreds, makeApiCall
+from config import getCreds, makeApiCall
 
-def createMediaObject( params ) :
+def createMediaObject(params) :
 	""" Create media object
 
 	Args:
@@ -28,9 +28,9 @@ def createMediaObject( params ) :
 		endpointParams['media_type'] = params['media_type']  # specify media type
 		endpointParams['video_url'] = params['media_url']  # url to the asset
 	
-	return makeApiCall( url, endpointParams, 'POST' ) # make the api call
+	return makeApiCall(url, endpointParams, 'POST') # make the api call
 
-def getMediaObjectStatus( mediaObjectId, params ) :
+def getMediaObjectStatus(mediaObjectId, params) :
 	""" Check the status of a media object
 
 	Args:
@@ -51,7 +51,7 @@ def getMediaObjectStatus( mediaObjectId, params ) :
 	endpointParams['fields'] = 'status_code' # fields to get back
 	endpointParams['access_token'] = params['access_token'] # access token
 
-	return makeApiCall( url, endpointParams, 'GET' ) # make the api call
+	return makeApiCall(url, endpointParams, 'GET') # make the api call
 
 def publishMedia( mediaObjectId, params ) :
 	""" Publish content
@@ -74,7 +74,7 @@ def publishMedia( mediaObjectId, params ) :
 	endpointParams['creation_id'] = mediaObjectId # fields to get back
 	endpointParams['access_token'] = params['access_token'] # access token
 
-	return makeApiCall( url, endpointParams, 'POST' ) # make the api call
+	return makeApiCall(url, endpointParams, 'POST') # make the api call
 
 def getContentPublishingLimit( params ) :
 	""" Get the api limit for the user
@@ -96,7 +96,7 @@ def getContentPublishingLimit( params ) :
 	endpointParams['fields'] = 'config,quota_usage' # fields to get back
 	endpointParams['access_token'] = params['access_token'] # access token
 
-	return makeApiCall( url, endpointParams, 'GET' ) # make the api call
+	return makeApiCall(url, endpointParams, 'GET') # make the api call
 
 params = getCreds() # get creds from defines
 
@@ -112,17 +112,17 @@ imageMediaObjectResponse = createMediaObject( params ) # create a media object t
 imageMediaObjectId = imageMediaObjectResponse['json_data']['id'] # id of the media object that was created
 imageMediaStatusCode = 'IN_PROGRESS';
 
-print( "\n---- IMAGE MEDIA OBJECT -----\n" ) # title
-print( "\tID:" ) # label
-print( "\t" + imageMediaObjectId ) # id of the object
+print("\n---- IMAGE MEDIA OBJECT -----\n") # title
+print("\tID:") # label
+print("\t" + imageMediaObjectId) # id of the object
 
 while imageMediaStatusCode != 'FINISHED' : # keep checking until the object status is finished
 	imageMediaObjectStatusResponse = getMediaObjectStatus( imageMediaObjectId, params ) # check the status on the object
 	imageMediaStatusCode = imageMediaObjectStatusResponse['json_data']['status_code'] # update status code
 
-	print( "\n---- IMAGE MEDIA OBJECT STATUS -----\n" ) # display status response
-	print( "\tStatus Code:" ) # label
-	print( "\t" + imageMediaStatusCode ) # status code of the object
+	print("\n---- IMAGE MEDIA OBJECT STATUS -----\n") # display status response
+	print("\tStatus Code:") # label
+	print("\t" + imageMediaStatusCode) # status code of the object
 
 	time.sleep( 5 ) # wait 5 seconds if the media object is still being processed
 
