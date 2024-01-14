@@ -9,6 +9,5 @@ def upload_to_publitio(file):
     return result
 
 
-def delete_from_publitio(file):
-    # TODO
-    pass
+def delete_from_publitio(id):
+    publitio_api.delete_file(id)

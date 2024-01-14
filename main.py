@@ -6,12 +6,15 @@ def main():
 
 
     # Upload video to publitio
-    # url = upload_to_publitio('/Users/samuelxing/instagram_bot/test_vid.mp4')
-    # print(url)
+    response = upload_to_publitio('/Users/samuelxing/instagram_bot/test_vid.mp4')
+
     # Upload video to instagram
-    upload_to_instagram("https://media.publit.io/file/test-vid-3.mp4")
+    video_url = response['url_short']
+    # upload_to_instagram("https://media.publit.io/file/test-vid-3.mp4")
 
-
+    # Delete video from publitio
+    video_id = response['id']
+    delete_from_publitio(video_id)
 
 
 
