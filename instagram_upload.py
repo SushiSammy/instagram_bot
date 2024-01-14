@@ -129,7 +129,6 @@ def upload_to_instagram(url):
     params['caption'] += "\n#funny #meme" # caption for the post
 
     imageMediaObjectResponse = create_media_object(params) # create a media object through the api
-    print(imageMediaObjectResponse['json_data'])
     imageMediaObjectId = imageMediaObjectResponse['json_data']['id'] # id of the media object that was created
     imageMediaStatusCode = 'IN_PROGRESS'
 
