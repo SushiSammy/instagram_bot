@@ -23,10 +23,8 @@ def make_api_call(url, endpointParams, type) :
 		url: string of the url endpoint to make request from
 		endpointParams: dictionary keyed by the names of the url parameters
 
-
 	Returns:
 		object: data from the endpoint
-
 	"""
 
 	if type == 'POST' : # post request
@@ -55,7 +53,6 @@ def create_media_object(params) :
 
 	Returns:
 		object: data from the endpoint
-
 	"""
 
 	url = params['endpoint_base'] + params['instagram_account_id'] + '/media' # endpoint url
@@ -84,7 +81,6 @@ def get_media_object_status(mediaObjectId, params) :
 
 	Returns:
 		object: data from the endpoint
-
 	"""
 
 	url = params['endpoint_base'] + '/' + mediaObjectId # endpoint url
@@ -107,7 +103,6 @@ def publish_media(mediaObjectId, params) :
 
 	Returns:
 		object: data from the endpoint
-
 	"""
 
 	url = params['endpoint_base'] + params['instagram_account_id'] + '/media_publish' # endpoint url
@@ -144,6 +139,6 @@ def upload_to_instagram(url):
         print("\tStatus Code:") # label
         print("\t" + imageMediaStatusCode) # status code of the object
 
-        time.sleep( 5 ) # wait 5 seconds if the media object is still being processed
+        time.sleep(5) # wait 5 seconds if the media object is still being processed
 
     publish_media(imageMediaObjectId, params) # publish the post to instagram
