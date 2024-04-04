@@ -11,8 +11,8 @@ def main():
     print(publitio_response)
     # Upload video to instagram
     video_url = publitio_response['url_short']
-    time.sleep(240)
-    print(video_url)
+    time.sleep(240) # figure out how long is really necessary
+    # print(video_url)
     upload_to_instagram(video_url)
     # test url: "https://media.publit.io/file/test-vid-3.mp4"
 
